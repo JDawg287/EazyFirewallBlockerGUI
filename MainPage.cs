@@ -24,14 +24,40 @@ namespace EazyFirewallBlockerGUI
         const string BATCHFILENAME = "FirewallBlocker.bat";
 
         /// <summary>
+        /// Search for all the executables in the provided path and populate them into the checkbox list
+        /// </summary>
+        /// <param name="lookupPath"></param>
+        /// <returns></returns>
+        void populateExecutables(string lookupPath)
+        {
+            chkbFilesList.Items.Clear(); // clear the list for fresh data
+
+            // Name of the current executable
+            string curExeName = System.AppDomain.CurrentDomain.FriendlyName;
+            var executablesInDir = Directory.GetFiles(lookupPath, "*.exe", SearchOption.AllDirectories).
+                Where(path => Path.GetFileNameWithoutExtension(path) != Path.GetFileNameWithoutExtension(curExeName)).
+                ToArray();
+
+            //alert the user if no executables are found
+            if (executablesInDir.Count() == 0)
+            {
+                MessageBox.Show("No executables were found in " + "\"" + lookupPath + "\".", "Info");
+                return;
+            }
+
+            // add items to the checkbox list
+            for (int i = 0; i < executablesInDir.Count(); i++)
+            {
+                chkbFilesList.Items.Add(executablesInDir[i], CheckState.Checked);
+            }
+        }
+
+        /// <summary>
         /// Fetch the executables in the directory
-        /// where the program is copied
+        /// where the program is copied to
         /// </summary>
         private void fetchInfo()
         {
-            // Name of the current executable
-            string curExeName = System.AppDomain.CurrentDomain.FriendlyName;
-
             // validate if the companion batch file exists or not
             string curDir = Directory.GetCurrentDirectory();
             string batchFilepath = curDir + "\\" + BATCHFILENAME;
@@ -42,13 +68,22 @@ namespace EazyFirewallBlockerGUI
             }
 
             // populate the checkbox list
-            var executablesInDir = Directory.GetFiles(curDir, "*.exe", SearchOption.AllDirectories);
+            populateExecutables(curDir);
+        }
 
-            for (int i = 0; i < executablesInDir.Count(); i++)
+        /// <summary>
+        /// select default directory button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSelectDir_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
             {
-                if (Path.GetFileNameWithoutExtension(executablesInDir[i]) != Path.GetFileNameWithoutExtension(curExeName)) // do not include own path
+                DialogResult result = fbd.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    chkbFilesList.Items.Add(executablesInDir[i], CheckState.Checked);
+                    populateExecutables(fbd.SelectedPath);
                 }
             }
         }
