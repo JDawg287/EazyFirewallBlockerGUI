@@ -1,0 +1,16 @@
+.suo
+db.lock
+storage.ide
+EazyFirewallBlockerGUI.exe
+EazyFirewallBlockerGUI.exe.config
+EazyFirewallBlockerGUI.pdb
+FirewallBlocker.bat
+EazyFirewallBlockerGUI.MainPage.resources
+EazyFirewallBlockerGUI.Properties.Resources.resources
+EazyFirewallBlockerGUI.csproj.CoreCompileInputs.cache
+EazyFirewallBlockerGUI.csproj.FileListAbsolute.txt
+EazyFirewallBlockerGUI.csproj.GenerateResource.cache
+EazyFirewallBlockerGUI.csprojAssemblyReference.cache
+*.ide-shm
+*.ide-wal
+*.cache
