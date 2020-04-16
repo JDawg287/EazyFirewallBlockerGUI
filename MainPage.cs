@@ -22,6 +22,10 @@ namespace EazyFirewallBlockerGUI
         ///  Name of the companion batch file that is required by the program to function
         /// </summary>
         const string BATCHFILENAME = "FirewallBlocker.bat";
+        /// <summary>
+        /// Store a boolean for the current checked state
+        /// </summary>
+        bool selected = false;
 
         /// <summary>
         /// Search for all the executables in the provided path and populate them into the checkbox list
@@ -200,6 +204,23 @@ namespace EazyFirewallBlockerGUI
             {
                 outRes = e.Message;
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Select/unselect all button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnToggleSelection_Click(object sender, EventArgs e)
+        {
+            if (chkbFilesList.Items.Count != 0)
+            {
+                for (int i = 0; i < chkbFilesList.Items.Count; i++)
+                {
+                    chkbFilesList.SetItemChecked(i, selected);
+                }
+                selected = !selected;
             }
         }
     }

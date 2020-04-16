@@ -38,6 +38,7 @@
             this.btnSelectDir = new System.Windows.Forms.Button();
             this.pnlLabel = new System.Windows.Forms.Panel();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnToggleSelection = new System.Windows.Forms.Button();
             this.pnlList.SuspendLayout();
             this.pnlButtons.SuspendLayout();
             this.pnlLabel.SuspendLayout();
@@ -100,6 +101,7 @@
             // 
             // pnlButtons
             // 
+            this.pnlButtons.Controls.Add(this.btnToggleSelection);
             this.pnlButtons.Controls.Add(this.btnSelectDir);
             this.pnlButtons.Controls.Add(this.btnClose);
             this.pnlButtons.Controls.Add(this.btnBlkFirewall);
@@ -139,6 +141,16 @@
             this.pnlMain.Size = new System.Drawing.Size(643, 363);
             this.pnlMain.TabIndex = 6;
             // 
+            // btnToggleSelection
+            // 
+            this.btnToggleSelection.Location = new System.Drawing.Point(134, 3);
+            this.btnToggleSelection.Name = "btnToggleSelection";
+            this.btnToggleSelection.Size = new System.Drawing.Size(125, 25);
+            this.btnToggleSelection.TabIndex = 5;
+            this.btnToggleSelection.Text = "Toggle Select";
+            this.btnToggleSelection.UseVisualStyleBackColor = true;
+            this.btnToggleSelection.Click += new System.EventHandler(this.BtnToggleSelection_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -170,6 +182,7 @@
         private System.Windows.Forms.Button btnSelectDir;
         private System.Windows.Forms.Panel pnlLabel;
         private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Button btnToggleSelection;
     }
 }
 
