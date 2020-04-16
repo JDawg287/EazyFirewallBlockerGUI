@@ -7,10 +7,8 @@ A very simple program written in C# for blocking a program in the Windows Defend
  - The search path includes all the subdirectories under the directory where the program was copied.
 
 ## Usage
-Copy the program *EazyFirewallBlockerGUI.exe* and the batch script *FirewallBlocker.bat*  in the directory containing the executable/executables you want to block in the firewall. The program will automatically fetch the executables in the directory and all subdirectories. Check the files you want to block and click on *Block Firewall* to block all the checked executables in the Windows Defender Firewall. You will have an option to view the results of the execution of the batch file at the end of the process. Clicking *Yes* will create a temporary file in the default temp folder *%TEMP%* and all the results are written in that file, which will be shown in the default text editor.
-
-## TODO
-Allow user to select the search directory via a button.
+Copy the program *EazyFirewallBlockerGUI.exe* and the batch script *FirewallBlocker.bat*  in the directory containing the executable/executables you want to block in the firewall. The program will automatically fetch the executables in the directory and all subdirectories. Check the files you want to block and click on *Block Firewall* to block all the checked executables in the Windows Defender Firewall. You will have an option to view the results of the execution of the batch file at the end of the process. Clicking *Yes* will create a temporary file in the default temp folder *%TEMP%* and all the results are written in that file, which will be shown in the default text editor.<br/>
+**Edit: Now you can also select the folder in which you want to search for the executables. [Release v0.01](https://github.com/JDawg287/EazyFirewallBlockerGUI/commit/4a43fbf3b147bbc99f1c5cdb4260d53799063347)**
 
 ## Tested on 
 Windows 10 Home 1903
